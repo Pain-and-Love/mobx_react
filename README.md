@@ -1,2 +1,2 @@
 # mobx_react
-mobx在react中的应用
+初认 mobx by TodoList
