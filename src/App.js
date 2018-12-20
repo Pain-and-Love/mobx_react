@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import TodoList from './TodoList';
+import TodoListState from './mobxState';
 
 class App extends PureComponent {
   render() {
     return (
-      <TodoList />
+      <TodoList todoList={new TodoListState()} />
     );
   }
 }
