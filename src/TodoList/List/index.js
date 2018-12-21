@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { observer } from 'mobx-react';
 import Item from '../ListItem';
 
-const List = props => {
+// 装饰默认的render方法
+const List = observer(props => {
   return (
     <ul>
       {
@@ -10,6 +12,6 @@ const List = props => {
       }
     </ul>
   );
-};
+});
 
 export default List;

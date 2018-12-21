@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { observer } from 'mobx-react';
 
-const Item = props => {
+// 装饰默认的render方法
+const Item = observer(props => {
   return (
-    (<li>{props.item.done} - {props.item.text}</li>)
+    (<li><input type="checkbox" checked={props.item.done} onChange={props.item.toggleDone}/>{props.item.text}</li>)
   );
-};
+});
 
 Item.propTypes = {
 

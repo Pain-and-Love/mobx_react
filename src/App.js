@@ -1,13 +1,9 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { observer } from 'mobx-react';
 import TodoList from './TodoList';
-import TodoListState from './mobxState';
 
-class App extends PureComponent {
-  render() {
-    return (
-      <TodoList todoList={new TodoListState()} />
-    );
-  }
-}
+// const App = observer(() => (<TodoList />))
+
+const App = () => (<TodoList />)
 
 export default App;

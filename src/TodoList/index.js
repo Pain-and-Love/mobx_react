@@ -1,37 +1,24 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { observer } from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 import List from './List';
 
+@inject('todoList')
 @observer
-class TodoList extends PureComponent {
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     value: '',
-  //     list: [],
-  //   }
-  // }
-
+class TodoList extends Component {
   handleChange = (e) => {
-    // this.setState({
-    //   value: e.target.value.trim(),
-    // });
+    const { changeValue } = this.props.todoList;
+    changeValue(e.target.value);
   }
 
   handleClick = () => {
-    // this.setState((pState) => ({
-    //   value: '',
-    //   list: pState.list.concat({
-    //     text: pState.value,
-    //     id: Math.random(),
-    //     done: false,
-    //   }),
-    // }));
+    const { todoList: { add, value } } = this.props;
+    if(!value.trim()) return;
+    add();
   }
 
   render() {
-    const { value, list, unfinishedTodoCount } = this.props.todoList
+    const { list, unfinishedTodoCount, value } = this.props.todoList
     return (
       <div>
         <input type="text" value={value} onChange={this.handleChange}/>
